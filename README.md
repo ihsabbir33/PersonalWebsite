@@ -1,6 +1,5 @@
 ﻿# Personal Portfolio Website
 ### Sabbir Ahmed
-Building intelligent web solutions with Django and machine learning
 ### Features
 - Responsive Design
 - Project Showcase
