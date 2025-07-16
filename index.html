@@ -69,9 +69,9 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="bio">
-                    <div>"Backend-focused Python developer skilled in Django, APIs, and database design. Experienced in full-stack
-                     (React, Bootstrap) and ML - built Bengali handwritten text recognition using CRNN."
-"Passionate about building efficient systems and applying AI to solve real-world problems."</div>
+                    <p>"Backend-focused Python developer skilled in Django, APIs, and database design. Experienced in full-stack (React, Bootstrap) and ML - built Bengali handwritten text recognition using CRNN."</p>
+                    <p>"Passionate about building efficient systems and applying AI to solve real-world problems."</p>
+                </div>
                 
                 <div class="education">
                     <h3>Education</h3>
@@ -88,7 +88,7 @@
                             <div class="timeline-date">2020</div>
                             <div class="timeline-content">
                                 <h4>Higher Secondary School Certificate (HSC)</h4>
-                                <p class="institution">Dhaka Board</p>
+                                <p class="institution">Jessore Board</p>
                                 <p class="details">GPA: 4.50/5.00</p>
                                 <p class="institution">Shishu Kunja School and College Jhenidah(JCC Campus)</p>
                                 <p class="details">Group: Science</p>
@@ -124,7 +124,7 @@
                             <ul>
                                 <li>Python 🐍</li>
                                 <li>Django</li>
-                                <li> </li>
+                                <li>Django REST</li>
                             </ul>
                         </div>
                         <div class="skill-category">
@@ -132,14 +132,14 @@
                             <ul>
                                 <li>NumPy, Pandas</li>
                                 <li>CRNN</li>
-                                <li>Yellow</li>
+                                <li>TensorFlow</li>
                             </ul>
                         </div>
                         <div class="skill-category">
                             <h4>Frontend</h4>
                             <ul>
                                 <li>HTML & CSS & JS</li>
-                                <li>Bootstrap </li>
+                                <li>Bootstrap</li>
                                 <li>React</li>
                             </ul>
                         </div>
@@ -163,7 +163,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300?text=Bangla+OCR" alt="Bangla OCR Thesis Project">
+                        <img src="sa1.jpg" alt="Bangla OCR Thesis Project">
                     </div>
                     <div class="project-info">
                         <h3>Bangla OCR Thesis Project</h3>
@@ -176,7 +176,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300?text=E-Commerce" alt="Django E-Commerce Platform">
+                        <img src="sa2.jpg" alt="Django E-Commerce Platform">
                     </div>
                     <div class="project-info">
                         <h3>Django E-Commerce Platform</h3>
@@ -189,7 +189,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300?text=Xenon+Healthcare" alt="Xenon Healthcare">
+                        <img src="sa3.jpg" alt="Xenon Healthcare">
                     </div>
                     <div class="project-info">
                         <h3>Xenon Healthcare</h3>
@@ -202,7 +202,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300?text=AI+Chatbot" alt="AI Chatbot for Education">
+                        <img src="sa4.jpg" alt="AI Chatbot for Education">
                     </div>
                     <div class="project-info">
                         <h3>AI Chatbot for Education</h3>
@@ -215,7 +215,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300?text=Attendance+System" alt="Smart Attendance System">
+                        <img src="sa5.jpg" alt="Smart Attendance System">
                     </div>
                     <div class="project-info">
                         <h3>Smart Attendance System</h3>
@@ -229,6 +229,24 @@
             </div>
         </div>
     </section>
+
+    <!-- Chatbot Button -->
+    <div class="chatbot-btn" id="chatbotTrigger">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <h3>Sabbir's AI Assistant</h3>
+            <button id="closeChatbot">&times;</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages"></div>
+        <div class="chatbot-input">
+            <input type="text" id="userInput" placeholder="Ask me about projects or skills...">
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
@@ -285,6 +303,157 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Chatbot functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatbotTrigger = document.getElementById('chatbotTrigger');
+            const chatbotContainer = document.getElementById('chatbotContainer');
+            const closeChatbot = document.getElementById('closeChatbot');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+            const userInput = document.getElementById('userInput');
+            const sendMessage = document.getElementById('sendMessage');
+
+            // Enhanced Q&A pairs with your specific information
+            const botResponses = {
+                "hello": "Hello! I'm Sabbir's AI assistant. Ask me about his projects, skills, or experience!",
+                "hi": "Hi there! How can I help you learn more about Sabbir's work?",
+                "projects": "Sabbir has worked on these key projects:<br><br>1) <strong>Bangla OCR Thesis Project</strong> - Handwritten word recognition with 92% accuracy<br>2) <strong>Django E-Commerce Platform</strong> - Full online store with payment processing<br>3) <strong>Xenon Healthcare</strong> - Digital healthcare services platform<br>4) <strong>AI Chatbot for Education</strong> - Bangla language support<br>5) <strong>Smart Attendance System</strong> - Facial recognition technology",
+                "skills": "Sabbir's technical skills include:<br><br><strong>Core:</strong> Python, Django, Django REST<br><strong>AI/ML:</strong> NumPy, Pandas, CRNN, TensorFlow<br><strong>Frontend:</strong> HTML/CSS/JS, Bootstrap, React<br><strong>Education Tech:</strong> Bangla NLP, OCR Systems",
+                "experience": "Sabbir has:<br>- Built 5+ production projects<br>- Developed Bengali handwritten text recognition using CRNN<br>- Experience with full-stack development (React, Bootstrap)<br>- Specializes in backend development with Django",
+                "thesis": "Sabbir's thesis at Green University is on <strong>'Bangla Handwritten Word Recognition using Deep Learning'</strong>, achieving 92% accuracy with a CRNN model.",
+                "contact": "You can reach Sabbir at:<br><br>📧 <strong>Email:</strong> sabbirahmed338989@gmail.com<br>📞 <strong>Phone:</strong> +880 1846 593095<br><br>Or use the contact form below!",
+                "education": "Sabbir's education:<br><br>🎓 <strong>BSc in CSE</strong> - Green University (2026)<br>📚 <strong>HSC</strong> - Science, GPA: 4.50/5.00 (2020)<br>📖 <strong>Dakhil</strong> - Science, GPA: 4.50/5.00 (2018)<br>📝 <strong>JDC</strong> - GPA: 4.60/5.00 (2015)",
+                "default": "I'm Sabbir's AI assistant. You can ask me about:<br>- His <strong>projects</strong><br>- Technical <strong>skills</strong><br>- Education <strong>background</strong><br>- How to <strong>contact</strong> him"
+            };
+
+            // Open/close chatbot
+            chatbotTrigger.addEventListener('click', () => {
+                chatbotContainer.style.display = 'flex';
+                addBotMessage(botResponses["hello"]);
+            });
+
+            closeChatbot.addEventListener('click', () => {
+                chatbotContainer.style.display = 'none';
+            });
+
+            // Send message function
+            function sendUserMessage() {
+                const message = userInput.value.trim();
+                if (message) {
+                    addUserMessage(message);
+                    userInput.value = '';
+                    setTimeout(() => {
+                        const response = generateBotResponse(message);
+                        addBotMessage(response);
+                    }, 500);
+                }
+            }
+
+            // Handle Enter key
+            userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendUserMessage();
+                }
+            });
+
+            sendMessage.addEventListener('click', sendUserMessage);
+
+            // Add message to chat
+            function addUserMessage(text) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', 'user-message');
+                messageDiv.innerHTML = text;
+                chatbotMessages.appendChild(messageDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            function addBotMessage(text) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', 'bot-message');
+                messageDiv.innerHTML = text;
+                chatbotMessages.appendChild(messageDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            // Generate bot response
+            function generateBotResponse(userMessage) {
+                const lowerMessage = userMessage.toLowerCase();
+                
+                // Check for specific keywords
+                if (lowerMessage.includes('project') || lowerMessage.includes('work')) {
+                    return botResponses["projects"];
+                } else if (lowerMessage.includes('skill') || lowerMessage.includes('technology')) {
+                    return botResponses["skills"];
+                } else if (lowerMessage.includes('thesis') || lowerMessage.includes('research')) {
+                    return botResponses["thesis"];
+                } else if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('phone')) {
+                    return botResponses["contact"];
+                } else if (lowerMessage.includes('education') || lowerMessage.includes('degree') || lowerMessage.includes('school')) {
+                    return botResponses["education"];
+                } else if (lowerMessage.includes('experience') || lowerMessage.includes('background')) {
+                    return botResponses["experience"];
+                } else if (lowerMessage.includes('hi') || lowerMessage.includes('hello')) {
+                    return botResponses["hello"];
+                }
+                
+                return botResponses["default"];
+            }
+        });
+
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission
+        const form = document.getElementById('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! Sabbir will get back to you soon.');
+                form.reset();
+            });
+        }
+    </script>
 </body>
 </html>
