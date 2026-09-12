@@ -1,0 +1,5 @@
+import { ArrowUp, Github, Linkedin, Mail } from 'lucide-react'
+
+export function Footer() {
+  return <footer className="site-footer"><div className="page-width footer-inner"><div><span className="wordmark">SA<span>.</span></span><p>Python, Django, and intelligent systems.</p></div><div className="footer-links"><a href="https://github.com/ihsabbir33" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={17} /></a><span className="unavailable-link" title="LinkedIn URL was not provided in the original site"><Linkedin size={17} /></span><a href="mailto:sabbirahmed338989@gmail.com" aria-label="Email"><Mail size={17} /></a><button className="back-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top"><ArrowUp size={17} /></button></div><small>© {new Date().getFullYear()} Sabbir Ahmed</small></div></footer>
+}
