@@ -12,7 +12,7 @@ import { Skills } from './components/Skills'
 const sectionIds = ['home', 'about', 'skills', 'projects', 'education', 'contact']
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark')
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') !== 'light')
   const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
